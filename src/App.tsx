@@ -4,6 +4,7 @@ import { Menu, X, Sparkles } from 'lucide-react';
 import { SectionHero } from './components/SectionHero';
 import { SectionDetails } from './components/SectionDetails';
 import { SectionProof } from './components/SectionProof';
+import { SectionMap } from './components/SectionMap';
 import { SectionCTA } from './components/SectionCTA';
 import { CustomCursorProxy } from './components/Effects';
 
@@ -18,14 +19,14 @@ const Navbar: React.FC = () => {
   }, []);
 
   return (
-    <nav 
+    <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
         isScrolled ? 'py-4 bg-white/80 backdrop-blur-xl border-b border-spa-nude/10' : 'py-8 bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <div className="flex items-center gap-2 cursor-pointer group">
-          <motion.div 
+          <motion.div
             whileHover={{ rotate: 180 }}
             className="text-spa-nude"
           >
@@ -35,7 +36,7 @@ const Navbar: React.FC = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-12">
-          {['Rituals', 'Artistry', 'Sanctuary', 'Journal'].map((item) => (
+          {['Rituale', 'Behandlungen', 'Oase', 'Journal'].map((item) => (
             <motion.a
               key={item}
               href={`#${item.toLowerCase()}`}
@@ -51,11 +52,11 @@ const Navbar: React.FC = () => {
             whileTap={{ scale: 0.95 }}
             className="px-6 py-3 bg-spa-stone text-spa-white rounded-full text-xs font-bold uppercase tracking-widest shadow-lg shadow-spa-stone/20"
           >
-            Reservations
+            Termin buchen
           </motion.button>
         </div>
 
-        <button 
+        <button
           className="md:hidden text-spa-stone p-2"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
@@ -72,10 +73,10 @@ const Navbar: React.FC = () => {
             className="md:hidden bg-white border-b border-spa-nude/10 overflow-hidden"
           >
             <div className="px-6 py-12 flex flex-col items-center gap-8">
-              {['Rituals', 'Artistry', 'Sanctuary', 'Journal'].map((item) => (
-                <a 
-                  key={item} 
-                  href={`#${item.toLowerCase()}`} 
+              {['Rituale', 'Behandlungen', 'Oase', 'Journal'].map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
                   className="text-lg font-serif text-spa-stone"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
@@ -83,7 +84,7 @@ const Navbar: React.FC = () => {
                 </a>
               ))}
               <button className="w-full py-4 bg-spa-stone text-white rounded-xl font-bold uppercase tracking-widest">
-                Reservations
+                Termin buchen
               </button>
             </div>
           </motion.div>
@@ -102,9 +103,10 @@ export default function App() {
         <SectionHero />
         <SectionDetails />
         <SectionProof />
+        <SectionMap />
         <SectionCTA />
       </main>
-      
+
       <footer className="py-12 px-6 flex justify-center border-t border-spa-nude/10">
         <div className="flex flex-col items-center gap-6">
           <div className="flex items-center gap-2">
@@ -112,7 +114,7 @@ export default function App() {
             <span className="text-sm font-serif font-bold tracking-tight text-spa-stone uppercase">remcosmetics</span>
           </div>
           <div className="flex gap-8">
-            {['Privacy', 'Terms', 'Careers', 'Contact'].map(item => (
+            {['Datenschutz', 'AGB', 'Karriere', 'Kontakt'].map(item => (
               <a key={item} href="#" className="text-[10px] uppercase tracking-widest text-spa-stone/40 hover:text-spa-nude transition-colors">
                 {item}
               </a>
@@ -123,4 +125,3 @@ export default function App() {
     </div>
   );
 }
-

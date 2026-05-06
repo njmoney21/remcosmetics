@@ -6,14 +6,14 @@ export const SectionCTA: React.FC = () => {
   return (
     <section className="relative py-32 px-6 overflow-hidden bg-spa-stone text-spa-white">
       <div className="absolute inset-0 opacity-20">
-        <div 
+        <div
           className="absolute inset-0"
           style={{
             backgroundImage: `radial-gradient(circle at 10% 20%, #D9C5C5 0%, transparent 40%), radial-gradient(circle at 90% 80%, #D9C5C5 0%, transparent 40%)`,
           }}
         />
       </div>
-      
+
       <div className="relative z-10 max-w-4xl mx-auto text-center space-y-12">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
@@ -22,17 +22,17 @@ export const SectionCTA: React.FC = () => {
           className="space-y-6"
         >
           <h2 className="text-4xl md:text-7xl font-serif font-light leading-tight">
-            Ready to find your <br />
-            <motion.span 
+            Bereit für deinen <br />
+            <motion.span
               className="italic text-spa-nude"
               animate={{ opacity: [0.6, 1, 0.6] }}
               transition={{ duration: 4, repeat: Infinity }}
             >
-              inner glow?
+              inneren Glow?
             </motion.span>
           </h2>
           <p className="text-spa-white/60 font-light max-w-xl mx-auto">
-            Book your appointment today and step into a world of tranquility and beauty artistry.
+            Buche noch heute deinen Termin und tauche ein in eine Welt voller Ruhe und Schönheitskunst.
           </p>
         </motion.div>
 
@@ -43,7 +43,7 @@ export const SectionCTA: React.FC = () => {
             className="px-10 py-5 border-2 border-spa-nude text-spa-nude rounded-full font-medium tracking-wide flex items-center gap-3 transition-colors"
           >
             <Calendar size={18} />
-            Check Availability
+            Verfügbarkeit prüfen
           </motion.button>
         </div>
 
@@ -59,7 +59,7 @@ export const SectionCTA: React.FC = () => {
             </span>
           </div>
           <p className="text-[10px] uppercase tracking-widest">
-            © 2026 remcosmetics Artistry. All rights reserved.
+            © 2026 Rem Cosmetics. Alle Rechte vorbehalten.
           </p>
         </div>
       </div>

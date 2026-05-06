@@ -6,10 +6,10 @@ export const SectionDetails: React.FC = () => {
   return (
     <section className="relative py-32 px-6 overflow-hidden">
       <ParallaxShapes />
-      
+
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-24 items-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -17,32 +17,32 @@ export const SectionDetails: React.FC = () => {
             className="space-y-12"
           >
             <div className="space-y-4">
-              <span className="text-spa-nude text-xs font-bold uppercase tracking-widest">Our philosophy</span>
+              <span className="text-spa-nude text-xs font-bold uppercase tracking-widest">Unsere Philosophie</span>
               <h2 className="text-4xl md:text-6xl font-serif font-light text-spa-stone leading-tight">
-                Enhancing your <br /> natural radiance.
+                Deine natürliche <br /> Ausstrahlung entfalten.
               </h2>
             </div>
-            
+
             <div className="space-y-8">
-              <DetailItem 
+              <DetailItem
                 number="01"
-                title="Bespoke Skincare"
-                description="Every face is unique. Our expert therapists analyze your skin to create a personalized ritual that yields visible, lasting results."
+                title="Individuelle Hautpflege"
+                description="Jedes Gesicht ist einzigartig. Unsere erfahrenen Therapeutinnen analysieren deine Haut und erstellen ein persönliches Ritual für sichtbare, nachhaltige Ergebnisse."
               />
-              <DetailItem 
+              <DetailItem
                 number="02"
-                title="Precision Artistry"
-                description="From lash extensions that frame your eyes to makeup that highlights your soul, we focus on the subtle details that make a difference."
+                title="Präzise Handwerkskunst"
+                description="Von Wimpernverlängerungen, die deine Augen betonen, bis hin zu Make-up, das deine Persönlichkeit hervorhebt – wir achten auf die feinen Details, die den Unterschied machen."
               />
-              <DetailItem 
+              <DetailItem
                 number="03"
-                title="Total Ambience"
-                description="We believe beauty starts with a peaceful mind. Our spa atmosphere is meticulously crafted for tranquility and comfort."
+                title="Wohltuende Atmosphäre"
+                description="Wir glauben, dass Schönheit mit innerer Ruhe beginnt. Unsere Spa-Atmosphäre ist sorgfältig gestaltet, um Entspannung und Wohlbefinden zu fördern."
               />
             </div>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -50,21 +50,21 @@ export const SectionDetails: React.FC = () => {
             className="relative"
           >
             <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
-              <img 
-                src="https://picsum.photos/seed/spa-details/1200/1500" 
-                alt="Spa Interior" 
+              <img
+                src="https://picsum.photos/seed/spa-details/1200/1500"
+                alt="Spa Innenraum"
                 className="w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
                 referrerPolicy="no-referrer"
               />
             </div>
-            <motion.div 
+            <motion.div
               className="absolute -bottom-10 -left-10 p-8 bg-spa-white rounded-2xl shadow-xl border border-spa-nude/10 max-w-xs"
               whileHover={{ y: -5 }}
             >
               <p className="text-sm italic font-serif text-spa-stone/80">
-                "The atmosphere is unlike anything I've experienced. Truly a haven for relaxation and beauty."
+                "Die Atmosphäre ist einzigartig. Ein wahres Refugium für Entspannung und Schönheit."
               </p>
-              <p className="mt-4 text-[10px] uppercase tracking-widest font-bold">Client Review</p>
+              <p className="mt-4 text-[10px] uppercase tracking-widest font-bold">Kundenstimme</p>
             </motion.div>
           </motion.div>
         </div>
@@ -74,7 +74,7 @@ export const SectionDetails: React.FC = () => {
 };
 
 const DetailItem: React.FC<{ number: string; title: string; description: string }> = ({ number, title, description }) => (
-  <motion.div 
+  <motion.div
     initial={{ opacity: 0, y: 10 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}

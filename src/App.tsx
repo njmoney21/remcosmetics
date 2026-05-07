@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, Sparkles } from 'lucide-react';
 import { SectionHero } from './components/SectionHero';
 import { SectionDetails } from './components/SectionDetails';
+import { SectionServices } from './components/SectionServices';
 import { SectionProof } from './components/SectionProof';
 import { SectionMap } from './components/SectionMap';
 import { SectionCTA } from './components/SectionCTA';
@@ -102,6 +103,7 @@ export default function App() {
       <main>
         <SectionHero />
         <SectionDetails />
+        <SectionServices />
         <SectionProof />
         <SectionMap />
         <SectionCTA />

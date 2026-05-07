@@ -2,8 +2,11 @@ import { motion } from 'motion/react';
 import { Eye, Sparkles, User, ArrowRight } from 'lucide-react';
 import React from 'react';
 import { AnimatedGradient, BeamTexture, ParticleDrift } from './Effects';
+import { useBooking } from '../context/BookingContext';
 
 export const SectionHero: React.FC = () => {
+  const { open } = useBooking();
+
   return (
     <section className="relative min-h-[90vh] flex flex-col items-center justify-center pt-20 px-6">
       <AnimatedGradient />
@@ -48,17 +51,15 @@ export const SectionHero: React.FC = () => {
           transition={{ delay: 0.4, duration: 0.8 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-6"
         >
-          <motion.a
-            href="https://beautinda.de/artist/57OGofkBgqPo51sKUQs4J6YQeIY2"
-            target="_blank"
-            rel="noopener noreferrer"
+          <motion.button
+            onClick={open}
             whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(217, 197, 197, 0.5)" }}
             whileTap={{ scale: 0.95 }}
             className="px-10 py-5 bg-spa-stone text-spa-white rounded-full font-medium tracking-wide flex items-center gap-3 transition-shadow"
           >
             Termin buchen
             <ArrowRight size={18} />
-          </motion.a>
+          </motion.button>
 
           <div className="flex -space-x-4">
             {[1, 2, 3, 4].map((i) => (
@@ -95,20 +96,11 @@ export const SectionHero: React.FC = () => {
 };
 
 const NavItem: React.FC<{ icon: React.ReactNode; label: string }> = ({ icon, label }) => (
-  <motion.div
-    whileHover="hover"
-    className="flex flex-col items-center gap-3 cursor-pointer group"
-  >
-    <motion.div
-      variants={{
-        hover: { y: -5, color: '#D9C5C5' }
-      }}
-      className="p-4 rounded-2xl bg-spa-nude/5 text-spa-stone transition-colors group-hover:bg-spa-nude/10"
-    >
+  <motion.div whileHover="hover" className="flex flex-col items-center gap-3 cursor-pointer group">
+    <motion.div variants={{ hover: { y: -5, color: '#D9C5C5' } }}
+      className="p-4 rounded-2xl bg-spa-nude/5 text-spa-stone transition-colors group-hover:bg-spa-nude/10">
       {icon}
     </motion.div>
-    <span className="text-[10px] md:text-xs font-semibold uppercase tracking-[0.2em] text-spa-stone/60 group-hover:text-spa-stone">
-      {label}
-    </span>
+    <span className="text-[10px] md:text-xs font-semibold uppercase tracking-[0.2em] text-spa-stone/60 group-hover:text-spa-stone">{label}</span>
   </motion.div>
 );

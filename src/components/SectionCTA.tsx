@@ -37,14 +37,17 @@ export const SectionCTA: React.FC = () => {
         </motion.div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-          <motion.button
+          <motion.a
+            href="https://beautinda.de/artist/57OGofkBgqPo51sKUQs4J6YQeIY2"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05, background: "#D9C5C5", color: "#625959" }}
             whileTap={{ scale: 0.95 }}
             className="px-10 py-5 border-2 border-spa-nude text-spa-nude rounded-full font-medium tracking-wide flex items-center gap-3 transition-colors"
           >
             <Calendar size={18} />
             Verfügbarkeit prüfen
-          </motion.button>
+          </motion.a>
         </div>
 
         <div className="pt-20 border-t border-spa-white/10 flex flex-col md:flex-row items-center justify-between gap-8 opacity-40">

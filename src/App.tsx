@@ -46,13 +46,16 @@ const Navbar: React.FC = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-spa-nude transition-all duration-300 group-hover:w-full" />
             </motion.a>
           ))}
-          <motion.button
+          <motion.a
+            href="https://beautinda.de/artist/57OGofkBgqPo51sKUQs4J6YQeIY2"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="px-6 py-3 bg-spa-stone text-spa-white rounded-full text-xs font-bold uppercase tracking-widest shadow-lg shadow-spa-stone/20"
           >
             Termin buchen
-          </motion.button>
+          </motion.a>
         </div>
 
         <button
@@ -83,9 +86,14 @@ const Navbar: React.FC = () => {
                   {item}
                 </a>
               ))}
-              <button className="w-full py-4 bg-spa-stone text-white rounded-xl font-bold uppercase tracking-widest">
+              <a
+                href="https://beautinda.de/artist/57OGofkBgqPo51sKUQs4J6YQeIY2"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-4 bg-spa-stone text-white rounded-xl font-bold uppercase tracking-widest text-center block"
+              >
                 Termin buchen
-              </button>
+              </a>
             </div>
           </motion.div>
         )}

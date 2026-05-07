@@ -48,14 +48,17 @@ export const SectionHero: React.FC = () => {
           transition={{ delay: 0.4, duration: 0.8 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-6"
         >
-          <motion.button
+          <motion.a
+            href="https://beautinda.de/artist/57OGofkBgqPo51sKUQs4J6YQeIY2"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(217, 197, 197, 0.5)" }}
             whileTap={{ scale: 0.95 }}
             className="px-10 py-5 bg-spa-stone text-spa-white rounded-full font-medium tracking-wide flex items-center gap-3 transition-shadow"
           >
             Termin buchen
             <ArrowRight size={18} />
-          </motion.button>
+          </motion.a>
 
           <div className="flex -space-x-4">
             {[1, 2, 3, 4].map((i) => (

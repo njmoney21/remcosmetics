@@ -51,10 +51,9 @@ export const SectionDetails: React.FC = () => {
           >
             <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
               <img
-                src="https://picsum.photos/seed/spa-details/1200/1500"
-                alt="Spa Innenraum"
+                src="/salon-photo.png"
+                alt="Rem Cosmetics Studio"
                 className="w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
-                referrerPolicy="no-referrer"
               />
             </div>
             <motion.div

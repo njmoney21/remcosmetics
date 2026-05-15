@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { Clock, Plus, X } from 'lucide-react';
-import React, { useState, useMemo } from 'react';
+import { Clock, Plus, X, ChevronDown } from 'lucide-react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Search } from 'lucide-react';
 import { categories } from '../data/services';
 import type { Service } from '../data/services';
@@ -11,6 +11,7 @@ export const SectionServices: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('alle');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedService, setSelectedService] = useState<Service | null>(null);
+  const [openCategories, setOpenCategories] = useState<Set<string>>(new Set());
 
   const filteredCategories = useMemo(() => {
     const base = activeTab === 'alle' ? categories : categories.filter((c) => c.id === activeTab);
@@ -22,6 +23,28 @@ export const SectionServices: React.FC = () => {
   }, [activeTab, searchQuery]);
 
   const totalResults = filteredCategories.reduce((acc, c) => acc + c.services.length, 0);
+
+  // Auto-expand when a specific tab is selected
+  useEffect(() => {
+    if (activeTab !== 'alle') {
+      setOpenCategories(new Set([activeTab]));
+    }
+  }, [activeTab]);
+
+  // Auto-expand all matching categories when searching
+  useEffect(() => {
+    if (searchQuery.trim()) {
+      setOpenCategories(new Set(filteredCategories.map((c) => c.id)));
+    }
+  }, [searchQuery, filteredCategories]);
+
+  const toggleCategory = (id: string) => {
+    setOpenCategories((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id); else next.add(id);
+      return next;
+    });
+  };
 
   return (
     <section id="rituale" className="relative py-32 px-6 bg-spa-white overflow-hidden">
@@ -80,26 +103,53 @@ export const SectionServices: React.FC = () => {
               Kein Service gefunden für „{searchQuery}"
             </motion.p>
           ) : (
-            <motion.div key={activeTab + searchQuery} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25 }} className="space-y-10">
-              {filteredCategories.map((category) => (
-                <div key={category.id}>
-                  <div className="mb-4">
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-spa-nude">Kategorie</span>
-                    <div className="flex items-center gap-3 mt-1">
-                      <h3 className="text-xl font-serif text-spa-stone">
-                        {category.label}
-                        <span className="ml-2 text-base font-light text-spa-stone/40">({category.services.length})</span>
-                      </h3>
-                    </div>
-                    <div className="mt-3 h-px bg-spa-nude/20" />
+            <motion.div key={activeTab + searchQuery} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25 }} className="space-y-3">
+              {filteredCategories.map((category) => {
+                const isOpen = openCategories.has(category.id);
+                return (
+                  <div key={category.id} className="border border-spa-nude/20 rounded-2xl overflow-hidden bg-spa-white">
+                    {/* Accordion header */}
+                    <button
+                      onClick={() => toggleCategory(category.id)}
+                      className="w-full flex items-center justify-between px-5 py-4 text-left group hover:bg-spa-nude/5 transition-colors"
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className="text-[9px] font-bold uppercase tracking-widest text-spa-nude/70">Kategorie</span>
+                        <h3 className="text-base font-serif text-spa-stone">
+                          {category.label}
+                          <span className="ml-2 text-sm font-light text-spa-stone/35">({category.services.length})</span>
+                        </h3>
+                      </div>
+                      <motion.div
+                        animate={{ rotate: isOpen ? 180 : 0 }}
+                        transition={{ duration: 0.25, ease: 'easeInOut' }}
+                        className="text-spa-nude shrink-0"
+                      >
+                        <ChevronDown size={17} />
+                      </motion.div>
+                    </button>
+
+                    {/* Collapsible services */}
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.28, ease: 'easeInOut' }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-5 pb-2 border-t border-spa-nude/10">
+                            {category.services.map((service, idx) => (
+                              <ServiceRow key={idx} service={service} onDetails={() => setSelectedService(service)} onBook={() => open(service)} />
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
-                  <div>
-                    {category.services.map((service, idx) => (
-                      <ServiceRow key={idx} service={service} onDetails={() => setSelectedService(service)} onBook={() => open(service)} />
-                    ))}
-                  </div>
-                </div>
-              ))}
+                );
+              })}
               {searchQuery && (
                 <p className="text-[11px] text-spa-stone/30 uppercase tracking-widest text-center pt-4">
                   {totalResults} Ergebnis{totalResults !== 1 ? 'se' : ''} für „{searchQuery}"

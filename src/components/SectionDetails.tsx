@@ -25,17 +25,14 @@ export const SectionDetails: React.FC = () => {
 
             <div className="space-y-8">
               <DetailItem
-                number="01"
                 title="Individuelle Hautpflege"
                 description="Jedes Gesicht ist einzigartig. Unsere erfahrenen Therapeutinnen analysieren deine Haut und erstellen ein persönliches Ritual für sichtbare, nachhaltige Ergebnisse."
               />
               <DetailItem
-                number="02"
                 title="Präzise Handwerkskunst"
                 description="Von Wimpernverlängerungen, die deine Augen betonen, bis hin zu Make-up, das deine Persönlichkeit hervorhebt – wir achten auf die feinen Details, die den Unterschied machen."
               />
               <DetailItem
-                number="03"
                 title="Wohltuende Atmosphäre"
                 description="Wir glauben, dass Schönheit mit innerer Ruhe beginnt. Unsere Spa-Atmosphäre ist sorgfältig gestaltet, um Entspannung und Wohlbefinden zu fördern."
               />
@@ -72,21 +69,16 @@ export const SectionDetails: React.FC = () => {
   );
 };
 
-const DetailItem: React.FC<{ number: string; title: string; description: string }> = ({ number, title, description }) => (
+const DetailItem: React.FC<{ title: string; description: string }> = ({ title, description }) => (
   <motion.div
     initial={{ opacity: 0, y: 10 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
-    className="group flex gap-8 border-b border-spa-nude/20 pb-8 last:border-0"
+    className="border-b border-spa-nude/20 pb-8 last:border-0 space-y-2"
   >
-    <span className="text-spa-nude font-serif italic text-2xl pt-1 opacity-50 group-hover:opacity-100 transition-opacity">
-      {number}
-    </span>
-    <div className="space-y-2">
-      <h3 className="text-xl font-medium text-spa-stone">{title}</h3>
-      <p className="text-spa-stone/60 font-light leading-relaxed max-w-md">
-        {description}
-      </p>
-    </div>
+    <h3 className="text-xl font-medium text-spa-stone">{title}</h3>
+    <p className="text-spa-stone/60 font-light leading-relaxed max-w-md">
+      {description}
+    </p>
   </motion.div>
 );

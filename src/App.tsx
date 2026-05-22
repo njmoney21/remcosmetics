@@ -15,7 +15,7 @@ import { BookingProvider, useBooking } from './context/BookingContext';
 import { LegalModal, LegalModalType } from './components/LegalModal';
 
 const Logo: React.FC<{ className?: string }> = ({ className = 'h-14' }) => (
-  <img src="/logo.png" alt="Rem Cosmetics" className={`${className} w-auto object-contain mix-blend-multiply`} />
+  <img src="/logo.png" alt="Rem Cosmetics" className={`${className} w-auto object-contain`} />
 );
 
 const navItems = [

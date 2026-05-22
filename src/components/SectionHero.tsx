@@ -7,7 +7,21 @@ export const SectionHero: React.FC = () => {
   const { open } = useBooking();
 
   return (
-    <section className="relative min-h-screen bg-spa-cream overflow-hidden flex flex-col items-center">
+    <section className="relative min-h-screen overflow-hidden flex flex-col items-center">
+
+      {/* Video background */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/lp.mp4" type="video/mp4" />
+      </video>
+
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/40" />
 
       {/* Subtle grain */}
       <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.035 }}>
@@ -22,7 +36,7 @@ export const SectionHero: React.FC = () => {
       <div className="relative z-10 w-full max-w-4xl mx-auto px-6 pt-40 pb-0 text-center flex flex-col items-center gap-7">
 
         <motion.p
-          className="text-[10px] uppercase tracking-[0.35em] text-spa-stone/35 font-medium"
+          className="text-[10px] uppercase tracking-[0.35em] text-white/60 font-medium"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
@@ -31,7 +45,7 @@ export const SectionHero: React.FC = () => {
         </motion.p>
 
         <motion.h1
-          className="text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-serif font-light leading-[1.07] tracking-tight text-spa-stone"
+          className="text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-serif font-light leading-[1.07] tracking-tight text-white"
           initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: 'easeOut', delay: 0.1 }}
@@ -47,7 +61,7 @@ export const SectionHero: React.FC = () => {
         </motion.h1>
 
         <motion.p
-          className="max-w-md text-sm md:text-base text-spa-stone/55 font-light leading-relaxed"
+          className="max-w-md text-sm md:text-base text-white/70 font-light leading-relaxed"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.25 }}
@@ -74,7 +88,7 @@ export const SectionHero: React.FC = () => {
           <motion.a
             href="#behandlungen"
             whileHover={{ scale: 1.03 }}
-            className="px-7 py-3 rounded-full border border-spa-stone/15 text-spa-stone/55 text-xs font-semibold uppercase tracking-widest hover:border-spa-nude hover:text-spa-nude transition-colors duration-200"
+            className="px-7 py-3 rounded-full border border-white/30 text-white/70 text-xs font-semibold uppercase tracking-widest hover:border-white hover:text-white transition-colors duration-200"
           >
             Behandlungen
           </motion.a>

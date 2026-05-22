@@ -14,28 +14,8 @@ import { CustomCursorProxy } from './components/Effects';
 import { BookingProvider, useBooking } from './context/BookingContext';
 import { LegalModal, LegalModalType } from './components/LegalModal';
 
-const Logo: React.FC<{ className?: string; light?: boolean }> = ({ className = 'h-14', light = false }) => (
-  <svg
-    viewBox="0 0 80 48"
-    className={`${className} w-auto`}
-    aria-label="Rem Cosmetics"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <text
-      x="4"
-      y="38"
-      fontFamily="Georgia, 'Times New Roman', serif"
-      fontSize="40"
-      fontStyle="italic"
-      fontWeight="400"
-      fill={light ? '#fff' : '#2C1A1A'}
-      letterSpacing="-1"
-    >
-      RC
-    </text>
-    <line x1="4" y1="44" x2="76" y2="44" stroke={light ? 'rgba(255,255,255,0.4)' : '#D9C5C5'} strokeWidth="1" />
-  </svg>
+const Logo: React.FC<{ className?: string }> = ({ className = 'h-14' }) => (
+  <img src="/logo.png" alt="Rem Cosmetics" className={`${className} w-auto object-contain mix-blend-multiply`} />
 );
 
 const navItems = [
@@ -81,7 +61,7 @@ const Navbar: React.FC = () => {
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${isScrolled ? 'py-3 bg-white/80 backdrop-blur-xl border-b border-spa-nude/10' : 'py-6 bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <motion.div whileHover={{ scale: 1.03 }} className="cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          <Logo className="h-14" light={!isScrolled} />
+          <Logo className="h-14" />
         </motion.div>
 
         <div className="hidden md:flex items-center gap-12">

@@ -82,25 +82,6 @@ export const SectionHero: React.FC = () => {
 
       </div>
 
-      {/* Floating masked image below text */}
-      <motion.div
-        className="relative z-0 mt-14 flex justify-center w-full"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.4, delay: 0.5, ease: 'easeOut' }}
-      >
-        <img
-          src="/studio-front.png"
-          alt="Rem Cosmetics Studio"
-          className="w-72 sm:w-[340px] md:w-[420px] lg:w-[500px] h-auto"
-          style={{
-            maskImage:
-              'radial-gradient(ellipse 76% 80% at 50% 46%, black 20%, rgba(0,0,0,0.7) 42%, rgba(0,0,0,0.2) 60%, transparent 74%)',
-            WebkitMaskImage:
-              'radial-gradient(ellipse 76% 80% at 50% 46%, black 20%, rgba(0,0,0,0.7) 42%, rgba(0,0,0,0.2) 60%, transparent 74%)',
-          }}
-        />
-      </motion.div>
     </section>
   );
 };
